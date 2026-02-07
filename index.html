@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 Years of Us 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  color: #fff;
+}
+
+.card {
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(14px);
+  padding: 36px 32px;
+  border-radius: 28px;
+  text-align: center;
+  max-width: 430px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  animation: fadeIn 1.3s ease;
+}
+
+.hidden { display: none; }
+
+.heart {
+  font-size: 5.5rem;
+  cursor: pointer;
+  animation: pulse 1.6s infinite;
+}
+
+.tap-text {
+  margin-top: 18px;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.ring {
+  font-size: 4.2rem;
+  animation: pulse 2s infinite;
+}
+
+h1 {
+  margin: 16px 0;
+  font-size: 2.2rem;
+}
+
+p {
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+.buttons { margin-top: 26px; }
+
+button {
+  padding: 13px 28px;
+  border: none;
+  border-radius: 32px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 8px;
+  transition: transform 0.2s;
+}
+
+.yes {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: #fff;
+}
+
+.no {
+  background: #fff;
+  color: #ff5f9e;
+}
+
+button:hover { transform: scale(1.1); }
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heart-float {
+  position: absolute;
+  font-size: 18px;
+  animation: floatUp 7s linear;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div class="card" id="screen1">
+  <div class="heart" onclick="goNext()">❤️</div>
+  <div class="tap-text">Touch where our love began</div>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="card hidden" id="screen2">
+  <p>
+    Seven years ago, our story quietly began.<br>
+    Through smiles, tears, growth, and patience,<br>
+    we never stopped choosing each other. ❤️<br><br>
+    Every year didn’t just pass —<br>
+    it made our love deeper, stronger, and truer.
+  </p>
+  <button class="yes" onclick="showProposal()">Continue 💖</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="card hidden" id="screen3">
+  <div class="ring">💍</div>
+  <h1>Happy Propose Day</h1>
+  <p>
+    Seven years of holding hands,<br>
+    seven years of understanding without words,<br>
+    seven years of growing — together. 🌸<br><br>
+    If seven years felt this beautiful,<br>
+    imagine a lifetime with you.<br><br>
+    Will you continue this forever with me?
+  </p>
+
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">YES 💕</button>
+    <button class="no" onclick="moveNo(this)">NO 🙈</button>
+  </div>
+</div>
+
+<!-- SCREEN 4 -->
+<div class="card hidden" id="screen4">
+  <h1>Forever Starts Here 💖</h1>
+  <p>
+    Thank you for seven unforgettable years,<br>
+    and for choosing me again today. ❤️<br><br>
+    Our love didn’t just survive time —<br>
+    it grew more beautiful because of it.
+  </p>
+</div>
+
+<script>
+function goNext() {
+  screen1.classList.add("hidden");
+  screen2.classList.remove("hidden");
+}
+
+function showProposal() {
+  screen2.classList.add("hidden");
+  screen3.classList.remove("hidden");
+  createHearts(12);
+}
+
+function sayYes() {
+  screen3.classList.add("hidden");
+  screen4.classList.remove("hidden");
+  createHearts(30);
+}
+
+function moveNo(btn) {
+  btn.style.position = "absolute";
+  btn.style.left = Math.random() * 80 + "%";
+  btn.style.top = Math.random() * 80 + "%";
+}
+
+function createHearts(count) {
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart-float";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random() * 26) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }
+}
+</script>
+
+</body>
+</html>
